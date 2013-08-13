@@ -19,7 +19,6 @@ app.configure(function() {
 // This will allow us to save survey answers
 app.post('/saveResponse', function(req, res){
     console.log("Survey Answers Received: ");
-    console.log(req.is('json')) 
     console.log(req.body);
     surveyAnswers.push(req.body);
     console.log(surveyAnswers);
