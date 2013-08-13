@@ -19,7 +19,7 @@ directory now:
 ### Hello World
 The simplest example just says hello.  To run it:
 
-'''
+```
 cd hello-world
 node helloworld.js
-'''
+```
