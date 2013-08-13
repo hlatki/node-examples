@@ -15,23 +15,28 @@ var graph;  // The graph
 var ctx;  // The context
 
 $(document).ready(function() {
-    JS_cnt = 0;
-    BS_cnt = 0;
-    OST_cnt = 0;
-    KS_cnt = 0;
-
     // Add graph to DOM
     $('.graph').append('<canvas id="graphRadar" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>');
 
     graph = document.getElementById("graphRadar");
     ctx = graph.getContext("2d");
 
-    // Draw initial graph
+ /*   // Draw initial graph
     updateCounts(ctx, JS_cnt, JS_Xcoord, JS_Ycoord);
     updateCounts(ctx, BS_cnt, BS_Xcoord, BS_Ycoord);
     updateCounts(ctx, OST_cnt, OST_Xcoord, OST_Ycoord);
     updateCounts(ctx, KS_cnt, KS_Xcoord, KS_Ycoord);
-    drawGraph(ctx);
+    drawGraph(ctx);*/
+
+    //make a call to the server to grab the current count
+    $.ajax({
+      type: "POST",
+      url: "/saveResponse",
+      success: function(data) {
+        sumAndUpdate(data);
+      }
+    });
+
 });
 
 /*$('#target').submit(function() {
