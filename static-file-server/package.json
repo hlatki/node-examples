@@ -1,0 +1,8 @@
+{
+    "name": "Static-Server-Example",
+    "description": "Simple static server using express",
+    "version": "1.0.0",
+    "dependencies" : {
+        "express": "3.x"
+    }
+}

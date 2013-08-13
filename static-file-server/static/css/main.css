@@ -1,0 +1,57 @@
+body
+{
+    margin: 0 auto;
+    padding: 20px 100px;
+}
+
+.poll
+{
+    float:left;
+    font-size: 24px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+}
+
+.poll ul
+{
+    list-style-type: none;
+}
+
+.poll ul li
+{
+    padding: 20px;
+}
+
+#font-choice
+{
+    margin-left: 30px;
+}
+
+#style1
+{
+    font-family: 'Josefin Sans', sans-serif;
+    padding-left: 10px;
+}
+
+#style2
+{
+    font-family: 'Berkshire Swash', cursive;
+    padding-left: 10px;
+}
+
+#style3
+{
+    font-family: 'Old Standard TT', serif;
+    padding-left: 10px;
+}
+
+#style4
+{
+    font-family: 'Kaushan Script', cursive;
+    padding-left: 10px;
+}
+
+.graph
+{
+    float:right;
+}

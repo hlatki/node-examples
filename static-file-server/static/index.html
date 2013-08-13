@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Font Preference Poll Web App</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Old+Standard+TT:700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="poll">
+            <form method="POST">
+                <ul>
+                    <li>
+                        <label>Name</label>
+                        <input type="text" name="username" maxlength="20"/>
+                    </li>
+                    <li>
+                        <label>Which font do you like the most?</label><br/>
+                        <p id="font-choice"><input type="radio" name="favorite_font" value="JosefinSans"><span id="style1">Josefin Sans</span></p>
+                        <p id="font-choice"><input type="radio" name="favorite_font" value="BerkshireSwash"><span id="style2">Berkshire Sans</span></p>
+                        <p id="font-choice"><input type="radio" name="favorite_font" value="OldStdTT"><span id="style3">Old Standard TT</span></p>
+                        <p id="font-choice"><input type="radio" name="favorite_font" value="KaushanScript"><span id="style4">Kaushan Script</span></p>
+                    </li>
+                    <li>
+                        <label>How long have you been designing?</label>
+                        <input type="number" name="yrs_designing" min="1" max="70">
+                    </li>
+                    <li>
+                        <input type="submit" value="Submit"/>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="graph">
+            
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/form.js"></script>
+    </body>
+</html>
