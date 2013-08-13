@@ -51,50 +51,50 @@ $("#the-form").submit(function() {
             // data is what the server sent back
             // this will be an array of all the responses that have been submitted
 
-            var JS_cnt = 0;
-            var BS_cnt = 0;
-            var OST_cnt = 0;
-            var KS_cnt = 0;
-
-
             console.log(data);
             
-            clearGraph(ctx);
-
-            // update the count for each item returns
-            var len = data.length
-            for (var i = 0; i < len; i++) {
-                var preferredFont = data[i].favorite_font;
-                switch(preferredFont)
-                {
-                    case 'JosefinSans':
-                        JS_cnt++;
-                        break;
-                    case 'BerkshireSwash':
-                        BS_cnt++;
-                        break;
-                    case 'OldStdTT':
-                        OST_cnt++;
-                        break;
-                    case 'KaushanScript':
-                        KS_cnt++;
-                        break;
-                }
-            };
-           
-           //draw everything
-           updateCounts(ctx, JS_cnt, JS_Xcoord, JS_Ycoord);
-           updateCounts(ctx, BS_cnt, BS_Xcoord, BS_Ycoord);
-           updateCounts(ctx, OST_cnt, OST_Xcoord, OST_Ycoord);
-           updateCounts(ctx, KS_cnt, KS_Xcoord, KS_Ycoord);
-           drawGraph(ctx);
-            
-
+            sumAndUpdate(data);
         });
         return false;
 });
 
+// sum everything up and update the counts
+function sumAndUpdate(responseArray) {
+    var JS_cnt = 0;
+    var BS_cnt = 0;
+    var OST_cnt = 0;
+    var KS_cnt = 0;
 
+    clearGraph(ctx);
+
+    // update the count for each item returns
+    var len = responseArray.length
+    for (var i = 0; i < len; i++) {
+        var preferredFont = responseArray[i].favorite_font;
+        switch(preferredFont)
+        {
+            case 'JosefinSans':
+                JS_cnt++;
+                break;
+            case 'BerkshireSwash':
+                BS_cnt++;
+                break;
+            case 'OldStdTT':
+                OST_cnt++;
+                break;
+            case 'KaushanScript':
+                KS_cnt++;
+                break;
+        }
+    };
+   
+   //draw everything
+   updateCounts(ctx, JS_cnt, JS_Xcoord, JS_Ycoord);
+   updateCounts(ctx, BS_cnt, BS_Xcoord, BS_Ycoord);
+   updateCounts(ctx, OST_cnt, OST_Xcoord, OST_Ycoord);
+   updateCounts(ctx, KS_cnt, KS_Xcoord, KS_Ycoord);
+   drawGraph(ctx);
+}
 
 /* 
  * These functions take in graph's context:
