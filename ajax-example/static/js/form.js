@@ -1,7 +1,7 @@
-var JS_cnt;
+/*var JS_cnt;
 var BS_cnt;
 var OST_cnt;
-var KS_cnt;
+var KS_cnt;*/
 var JS_Xcoord = 110;
 var JS_Ycoord = 150;
 var BS_Xcoord = 360;
@@ -34,51 +34,62 @@ $(document).ready(function() {
     drawGraph(ctx);
 });
 
-// Send the data to the server, and display the results
-// That the server will send back
+/*$('#target').submit(function() {
+  alert('Handler for .submit() called.');
+  return false;
+});*/
+
 $("#the-form").submit(function() {
-    $.post($("#the-form").attr("action"), 
-    $("#the-form").serialize(),
-    function(data) { // this is what happens when the server responds
-        //data is what the server sent back
-        console.log(data);
-    }
-    /*
-    var formArr = $('form').serializeArray();
-    console.log(formArr);
-    var userName = formArr[0].value;
-    var preferredFont = formArr[1].value;
-    var yrsDesign = formArr[2].value;
-    console.log(preferredFont);
+        //Do the AJAX post
+        $.post($("#the-form").attr("action"), $("#the-form").serialize(), function(data){
+            // this is what happens when the server responds
+            // data is what the server sent back
+            // this will be an array of all the responses that have been submitted
 
-    storeUserData(userName, preferredFont, yrsDesign);
+            var JS_cnt = 0;
+            var BS_cnt = 0;
+            var OST_cnt = 0;
+            var KS_cnt = 0;
 
-    // Redraw graph to update with latest counts
-    clearGraph(ctx);
-    
-    switch(preferredFont)
-    {
-        case 'JosefinSans':
+
+            console.log(data);
+            
+            clearGraph(ctx);
+
+            // update the count for each item returns
+            var len = data.length
+            for (var i = 0; i < len; i++) {
+                var preferredFont = data[i].favorite_font;
+                switch(preferredFont)
+                {
+                    case 'JosefinSans':
                         JS_cnt++;
                         break;
-        case 'BerkshireSwash':
+                    case 'BerkshireSwash':
                         BS_cnt++;
                         break;
-        case 'OldStdTT':
+                    case 'OldStdTT':
                         OST_cnt++;
                         break;
-        case 'KaushanScript':
+                    case 'KaushanScript':
                         KS_cnt++;
                         break;
-    }
- //   updateCounts(ctx, JS_cnt, JS_Xcoord, JS_Ycoord);
- //   updateCounts(ctx, BS_cnt, BS_Xcoord, BS_Ycoord);
- //   updateCounts(ctx, OST_cnt, OST_Xcoord, OST_Ycoord);
- //   updateCounts(ctx, KS_cnt, KS_Xcoord, KS_Ycoord);
- //   drawGraph(ctx);
- */
-    return false;
+                }
+            };
+           
+           //draw everything
+           updateCounts(ctx, JS_cnt, JS_Xcoord, JS_Ycoord);
+           updateCounts(ctx, BS_cnt, BS_Xcoord, BS_Ycoord);
+           updateCounts(ctx, OST_cnt, OST_Xcoord, OST_Ycoord);
+           updateCounts(ctx, KS_cnt, KS_Xcoord, KS_Ycoord);
+           drawGraph(ctx);
+            
+
+        });
+        return false;
 });
+
+
 
 /* 
  * These functions take in graph's context:
@@ -117,7 +128,7 @@ function clearGraph(ctx)
     ctx.clearRect(0,0,500,500);
 }
 
-function storeUserData(name, font, years)
-{
-    alert("Hey, "+name+"! I see you like "+font+" & that you've been desiging for "+years+" years!");
-}
+/*function storeUserData(name, font, years)
+  {
+  alert("Hey, "+name+"! I see you like "+font+" & that you've been desiging for "+years+" years!");
+  }*/
